@@ -15,7 +15,7 @@ So far available for Actionscript and HaXe.
 
 ### Screenshot ###
 
-![hires_stats.png](http://github.com/mrdoob/stats.as/raw/master/assets/hires_stats.png)
+![hires_stats.png](http://github.com/mrdoob/Hi-ReS-Stats/raw/master/assets/hires_stats.png)
 
 ### Usage ###
 
