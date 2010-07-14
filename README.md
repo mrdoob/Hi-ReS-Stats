@@ -3,8 +3,6 @@ Hi-ReS! Stats
 
 #### Performance Monitor ####
 
-[![Flattr this](http://api.flattr.com/button/button-compact-static-100x17.png)](http://flattr.com/thing/33198/Hi-ReS-Stats)
-
 This class provides a simple info box that will help you monitor your code performance.
 So far available for Actionscript and HaXe.
 
