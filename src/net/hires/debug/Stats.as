@@ -1,6 +1,6 @@
 /**
  * stats.as
- * http://github.com/mrdoob/stats.as
+ * https://github.com/mrdoob/Hi-ReS-Stats
  * 
  * Released under MIT license:
  * http://www.opensource.org/licenses/mit-license.php
