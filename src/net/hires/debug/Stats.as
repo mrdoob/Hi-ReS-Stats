@@ -57,7 +57,12 @@ package net.hires.debug {
 			
 			mem_max = 0;
 
-			xml = <xml><fps>FPS:</fps><ms>MS:</ms><mem>MEM:</mem><memMax>MAX:</memMax></xml>;
+			xml = <xml>
+				<fps>FPS:</fps>
+				<ms>MS:</ms>
+				<mem>MEM:</mem>
+				<memMax>MAX:</memMax>
+			</xml>;
 		
 			style = new StyleSheet();
 			style.setStyle('xml', {fontSize:'9px', fontFamily:'_sans', leading:'-2px'});
@@ -116,7 +121,13 @@ package net.hires.debug {
 			
 			timer = getTimer();
 			
-			if( timer - 1000 > ms_prev ) {
+			var dTime : uint = timer - ms_prev;
+
+			if (dTime >= 1000) {
+
+				var missedPeriods : uint = (dTime - 1000) / 1000;
+
+				fps = fps % 1000;
 				
 				ms_prev = timer;
 				mem = Number((System.totalMemory * 0.000000954).toFixed(3));
@@ -126,9 +137,17 @@ package net.hires.debug {
 				mem_graph = Math.min(graph.height, Math.sqrt(Math.sqrt(mem * 5000))) - 2;
 				mem_max_graph = Math.min(graph.height, Math.sqrt(Math.sqrt(mem_max * 5000))) - 2;
 				
-				graph.scroll(-1, 0);
+				graph.scroll(-(1 + missedPeriods), 0);
 				
+				if (missedPeriods) {
+					graph.fillRect(new Rectangle(WIDTH - 1 - missedPeriods, 0, 1 + missedPeriods, HEIGHT - 50), colors.bg);
+				} else {
 				graph.fillRect(rectangle, colors.bg);
+				}
+				while (missedPeriods) {
+					graph.setPixel(graph.width - 1 - missedPeriods, graph.height - 1, colors.fps);
+					missedPeriods--;
+				}
 				graph.setPixel(graph.width - 1, graph.height - fps_graph, colors.fps);
 				graph.setPixel(graph.width - 1, graph.height - ( ( timer - ms ) >> 1 ), colors.ms);
 				graph.setPixel(graph.width - 1, graph.height - mem_graph, colors.mem);
