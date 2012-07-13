@@ -24,6 +24,7 @@ import flash.system.System;
 import flash.text.StyleSheet;
 import flash.text.TextField;
 import flash.xml.XML;
+import flash.xml.XMLList;
 
 
 class Stats extends Sprite {	
@@ -144,9 +145,9 @@ class Stats extends Sprite {
 			graph.setPixel(XPOS, ms_graph, Colors.ms);
 			graph.unlock();
 
-			xml.fps = "FPS: " + fps + " / " + stage.frameRate; 
-			xml.mem = "MEM: " + mem;
-			xml.memMax = "MAX: " + mem_max;			
+			xml.fps = new XMLList("FPS: " + fps + " / " + stage.frameRate);
+			xml.mem = new XMLList("MEM: " + mem);
+			xml.memMax = new XMLList("MAX: " + mem_max);
 
 			//reset frame and time counters
 			fps = 0;
@@ -157,7 +158,7 @@ class Stats extends Sprite {
 		//increment number of frames which have occurred in current second
 		fps++;
 
-		xml.ms = "MS: " + (timer - ms);
+		xml.ms = new XMLList("MS: " + (timer - ms));
 		ms = timer;
 		
 		text.htmlText = xml.toString();
