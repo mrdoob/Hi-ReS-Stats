@@ -23,8 +23,8 @@ import flash.geom.Rectangle;
 import flash.system.System;
 import flash.text.StyleSheet;
 import flash.text.TextField;
-import flash.xml.XML;
-import flash.xml.XMLList;
+
+using StringTools;
 
 
 class Stats extends Sprite {	
@@ -33,8 +33,6 @@ class Stats extends Sprite {
 	static inline var XPOS : Int = 69;//width - 1
 	static inline var GRAPH_HEIGHT : Int = 50;
 	static inline var TEXT_HEIGHT : Int = 50;
-
-	private var xml : XML;
 
 	private var text : TextField;
 	private var style : StyleSheet;
@@ -64,8 +62,6 @@ class Stats extends Sprite {
 		mem_max = 0;
 		fps = 0;
 
-
-		xml = new XML("<xml><fps>FPS:</fps><ms>MS:</ms><mem>MEM:</mem><memMax>MAX:</memMax></xml>");
 
 		style = new StyleSheet();
 		style.setStyle('xml', {fontSize:'9px', fontFamily:'_sans', leading:'-2px'});
@@ -145,23 +141,24 @@ class Stats extends Sprite {
 			graph.setPixel(XPOS, ms_graph, Colors.ms);
 			graph.unlock();
 
-			xml.fps = new XMLList("FPS: " + fps + " / " + stage.frameRate);
-			xml.mem = new XMLList("MEM: " + mem);
-			xml.memMax = new XMLList("MAX: " + mem_max);
+			var rawXML = "<xml><fps>FPS:</fps><ms>MS:</ms><mem>MEM:</mem><memMax>MAX:</memMax></xml>"
+				.replace ("FPS:", "FPS: " + fps + " / " + stage.frameRate)
+				.replace ("MEM:", "MEM: " + mem)
+				.replace ("MAX:", "MAX: " + mem_max)
+				.replace ("MS:", "MS: " + (timer - ms))
+				;
 
 			//reset frame and time counters
 			fps = 0;
 			ms_prev = timer;
 
+			text.htmlText = rawXML;
 			return;
 		}
 		//increment number of frames which have occurred in current second
 		fps++;
 
-		xml.ms = new XMLList("MS: " + (timer - ms));
 		ms = timer;
-		
-		text.htmlText = xml.toString();
 	}
 
 
