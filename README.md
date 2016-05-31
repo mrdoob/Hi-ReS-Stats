@@ -13,7 +13,7 @@ So far available for Actionscript and HaXe.
 
 ### Screenshot ###
 
-![hires_stats.png](http://github.com/mrdoob/Hi-ReS-Stats/raw/master/assets/hires_stats.png)
+![hires_stats.png](https://raw.githubusercontent.com/mrdoob/Hi-ReS-Stats/master/assets/hires_stats.png)
 
 ### Usage ###
 
@@ -25,5 +25,6 @@ So far available for Actionscript and HaXe.
 
 ### Download ###
 
-[Stats.as](http://github.com/mrdoob/Hi-ReS-Stats/raw/master/src/net/hires/debug/Stats.as)  
-[Stats.hx](http://github.com/mrdoob/Hi-ReS-Stats/raw/master/src/net/hires/debug/Stats.hx) (Ported by [David Wilhelm](http://github.com/bigfish))
+
+[Stats.as](https://github.com/mrdoob/Hi-ReS-Stats/raw/master/src/net/hires/debug/Stats.as)  
+[Stats.hx](https://github.com/mrdoob/Hi-ReS-Stats/raw/master/src/net/hires/debug/Stats.hx) (Ported by [David Wilhelm](http://github.com/bigfish))
