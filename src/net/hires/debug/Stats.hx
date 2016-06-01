@@ -144,9 +144,9 @@ class Stats extends Sprite {
 			graph.setPixel(XPOS, ms_graph, Colors.ms);
 			graph.unlock();
 
-			xml.fps = "FPS: " + fps + " / " + stage.frameRate; 
-			xml.mem = "MEM: " + mem;
-			xml.memMax = "MAX: " + mem_max;			
+			xml.fps.setChildren("FPS: " + fps + " / " + stage.frameRate); 
+			xml.mem.setChildren("MEM: " + mem);
+			xml.memMax.setChildren("MAX: " + mem_max);			
 
 			//reset frame and time counters
 			fps = 0;
@@ -157,7 +157,7 @@ class Stats extends Sprite {
 		//increment number of frames which have occurred in current second
 		fps++;
 
-		xml.ms = "MS: " + (timer - ms);
+		xml.ms.setChildren("MS: " + (timer - ms));
 		ms = timer;
 		
 		text.htmlText = xml.toString();
